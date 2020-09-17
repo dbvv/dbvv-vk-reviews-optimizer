@@ -12,4 +12,4 @@
  * @package         Dbvv_Vk_Reviews_Optimizer
  */
 
-// Your code starts here.
+require plugin_dir_path(__FILE__) . 'inc/cpt.php';
