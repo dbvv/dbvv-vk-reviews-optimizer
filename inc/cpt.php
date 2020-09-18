@@ -41,3 +41,28 @@ function dbvv_vk_reviews_optimizer_cpt(){
 	register_post_type( 'vk_r', $args );
 }
 
+add_action('add_meta_boxes', 'dbvv_vk_reviews_optimizer_metaboxes');
+function dbvv_vk_reviews_optimizer_metaboxes() {
+	$creens = ['vk_r'];
+	add_meta_box('dbvv_vk_reviews_optimizer_metaboxes', __('Metabox shortcode'), 'dbvv_vk_reviews_optimizer_shortcode_preview_metabox_callback', $screens);
+}
+
+function dbvv_vk_reviews_optimizer_shortcode_preview_metabox_callback($post, $meta) {
+	echo "[vk_r p={$post->ID}]";
+}
+
+add_filter('manage_edit-vk_r_columns', 'dbvv_vk_reviews_optimizer_add_new_columns' );
+function dbvv_vk_reviews_optimizer_add_new_columns($columns) {
+	$columns['shortcode'] = __('Shortcode');
+	return $columns;
+}
+
+add_action('manage_posts_custom_column', 'dbvv_vk_reviews_optimizer_custom_columns');
+function dbvv_vk_reviews_optimizer_custom_columns($column) {
+	global $post;
+	switch ($column) {
+	case 'shortcode':
+		echo "[vk_r p={$post->ID}]";
+		break;
+	}
+}
