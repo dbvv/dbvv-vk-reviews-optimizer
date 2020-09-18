@@ -43,7 +43,7 @@ function dbvv_vk_reviews_optimizer_cpt(){
 
 add_action('add_meta_boxes', 'dbvv_vk_reviews_optimizer_metaboxes');
 function dbvv_vk_reviews_optimizer_metaboxes() {
-	$creens = ['vk_r'];
+	$screens = ['vk_r'];
 	add_meta_box('dbvv_vk_reviews_optimizer_metaboxes', __('Metabox shortcode'), 'dbvv_vk_reviews_optimizer_shortcode_preview_metabox_callback', $screens);
 }
 
